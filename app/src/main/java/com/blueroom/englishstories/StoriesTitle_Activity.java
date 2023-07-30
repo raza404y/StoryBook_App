@@ -1,6 +1,7 @@
 package com.blueroom.englishstories;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
@@ -9,13 +10,21 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.blueroom.englishstories.Adapters.CategoryNameAdapter;
+import com.blueroom.englishstories.models.CategoryNames;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.blueroom.englishstories.databinding.ActivityStoriesNameBinding;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class StoriesTitle_Activity extends AppCompatActivity {
 
@@ -29,49 +38,76 @@ public class StoriesTitle_Activity extends AppCompatActivity {
         binding = ActivityStoriesNameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        final AppBarLayout appBarLayout = findViewById(R.id.appBarLayout);
         final CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
-        final Toolbar toolbar = findViewById(R.id.toolbar);
+        collapsingToolbarLayout.setExpandedTitleTextSize(50.5f);
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        setSupportActionBar(binding.toolbar1);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Set the custom drawable as the back button icon
+            actionBar.setHomeAsUpIndicator(R.drawable.back_button_custom);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+        }
+
+
+
+        binding.toolbar1.setNavigationOnClickListener(view -> {
+            onBackPressed();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        });
+
+
+          getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         String name = getIntent().getStringExtra("name");
         int uri = getIntent().getIntExtra("uri",0);
 
-        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setTitle(name+" Stories");
-        binding.imageViewHeader.setImageResource(uri);
 
 
-        // Set the initial title color (white when expanded)
-        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-         collapsingToolbarLayout.setExpandedTitleTextSize(50.5f);
-        // Set the title color when collapsed
-        final int titleColorCollapsed = Color.BLACK;
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isTitleColorWhite = true;
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int totalScrollRange = appBarLayout.getTotalScrollRange();
-                int offsetWithoutRange = Math.abs(verticalOffset) - totalScrollRange;
 
-                // Calculate the animation progress (0 to 1)
-                float animationProgress = (float) offsetWithoutRange / toolbar.getHeight();
+        ArrayList<CategoryNames> nameList = new ArrayList<>();
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
 
-                // Interpolate the title color from white to black
-                int newTitleColor = (int) new ArgbEvaluator().evaluate(animationProgress, Color.WHITE, titleColorCollapsed);
 
-                // Only update the title color if it's different to avoid unnecessary UI updates
-                if (isTitleColorWhite && newTitleColor != Color.WHITE) {
-                    isTitleColorWhite = false;
-                    collapsingToolbarLayout.setExpandedTitleColor(newTitleColor);
-                } else if (!isTitleColorWhite && newTitleColor != titleColorCollapsed) {
-                    isTitleColorWhite = true;
-                    collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-                }
-            }
-        });
+        CategoryNameAdapter adapter = new CategoryNameAdapter(nameList,StoriesTitle_Activity.this);
+        binding.categoryNameRecyclerView.setAdapter(adapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(StoriesTitle_Activity.this);
+        binding.categoryNameRecyclerView.setLayoutManager(layoutManager);
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

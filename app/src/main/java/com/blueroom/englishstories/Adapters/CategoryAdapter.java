@@ -46,8 +46,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             Intent intent = new Intent(context, StoriesTitle_Activity.class);
             intent.putExtra("name",model.getCategoryName());
             intent.putExtra("uri",model.getCategoryImage());
-            ((Activity) context).overridePendingTransition(0, 0);
             context.startActivity(intent);
+            ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 
         });

@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".StoriesTitle_Activity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".Read_Story_Activity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:theme="@style/Theme.StoryBook">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:expandedTitleTextColor="@color/black"
-            app:collapsedTitleTextColor="@color/black"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="@string/app_name"
             app:expandedTitleGravity="center|bottom"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/white">
+            app:expandedTitleTextColor="@color/white"
+            app:collapsedTitleTextColor="@color/black"
+            app:contentScrim="?attr/colorPrimary">
 
-            <View
+            <ImageView
+                android:id="@+id/storyImage"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"/>
+                android:layout_height="@dimen/_180sdp"
+                android:src="@drawable/img_2"
+                app:layout_collapseMode="parallax"
+                android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar1"
+                android:id="@+id/readStoryToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="top"
-                android:elevation="0dp"
-                android:backgroundTint="@color/white"
-                app:layout_collapseMode="pin"
-                app:titleTextColor="@color/black"
-                />
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -47,12 +48,13 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categoryNameRecyclerView"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="@dimen/_12sdp"/>
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14ssp"
+            android:text="@string/asd"
+            android:gravity="center"
+            android:padding="@dimen/_8sdp" />
 
     </androidx.core.widget.NestedScrollView>
 
