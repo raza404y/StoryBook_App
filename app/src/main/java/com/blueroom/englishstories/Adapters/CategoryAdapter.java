@@ -38,6 +38,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CategoryModel model =  categoryList.get(position);
         holder.binding.categoryName.setText(model.getCategoryName());
+        holder.binding.categorySubName.setText(model.getCategorySubName());
         holder.binding.categoryImage.setImageResource(model.getCategoryImage());
 
 

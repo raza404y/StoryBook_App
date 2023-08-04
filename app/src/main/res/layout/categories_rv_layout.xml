@@ -1,55 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:layout_marginStart="@dimen/_3sdp"
-    android:layout_marginEnd="@dimen/_3sdp">
+    android:orientation="vertical"
+    android:background="@drawable/cateogory_bg"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_8sdp">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackgroundBorderless">
 
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/categoryImage"
-                android:layout_width="@dimen/_55sdp"
-                android:layout_height="@dimen/_55sdp"
-                android:padding="@dimen/_7sdp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/roundedImageView" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/categoryImage"
+            android:layout_width="@dimen/_59sdp"
+            android:layout_height="@dimen/_59sdp"
+            android:padding="@dimen/_9sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/categoryName"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:paddingStart="@dimen/_8sdp"
-                android:paddingEnd="@dimen/_4sdp"
-                android:gravity="start|center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16ssp"
-                app:layout_constraintBottom_toBottomOf="@+id/categoryImage"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/categoryImage"
-                app:layout_constraintTop_toTopOf="@+id/categoryImage"
-                app:drawableEndCompat="@drawable/right_arrow" />
+        <TextView
+            android:id="@+id/categoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_4sdp"
+            android:text="Motivational"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintBottom_toTopOf="@+id/categorySubName"
+            app:layout_constraintStart_toEndOf="@+id/categoryImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/viewColor"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_1sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/categoryImage"
-        app:layout_constraintTop_toBottomOf="@+id/categoryImage" />
+        <TextView
+            android:id="@+id/categorySubName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_4sdp"
+            android:text="Get inspire everyday"
+            android:textSize="@dimen/_12ssp"
 
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/categoryImage"
+            app:layout_constraintTop_toBottomOf="@+id/categoryName" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--    <View-->
+        <!--        android:id="@+id/view"-->
+        <!--        android:layout_width="0dp"-->
+        <!--        android:layout_height="@dimen/_1sdp"-->
+        <!--        android:background="@color/viewColor"-->
+        <!--        android:layout_marginStart="@dimen/_8sdp"-->
+        <!--        android:layout_marginEnd="@dimen/_8sdp"-->
+        <!--        android:layout_marginTop="@dimen/_1sdp"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="@+id/categoryImage"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/categoryImage" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

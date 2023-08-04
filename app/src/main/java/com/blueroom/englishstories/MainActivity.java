@@ -35,26 +35,30 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<CategoryModel> categoryList = new ArrayList<>();
 
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3));
+        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
+        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
+        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
+        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
+        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
+        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
+        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
+
+
+
+
 
 
         CategoryAdapter adapter = new CategoryAdapter(categoryList, MainActivity.this);
