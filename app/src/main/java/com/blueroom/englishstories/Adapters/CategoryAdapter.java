@@ -3,11 +3,13 @@ package com.blueroom.englishstories.Adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blueroom.englishstories.R;
@@ -16,6 +18,7 @@ import com.blueroom.englishstories.databinding.CategoriesRvLayoutBinding;
 import com.blueroom.englishstories.models.CategoryModel;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder>{
 
@@ -40,6 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.binding.categoryName.setText(model.getCategoryName());
         holder.binding.categorySubName.setText(model.getCategorySubName());
         holder.binding.categoryImage.setImageResource(model.getCategoryImage());
+
 
 
         holder.itemView.setOnClickListener(view -> {

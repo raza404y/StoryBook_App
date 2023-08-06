@@ -6,38 +6,36 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.blueroom.englishstories.R;
 import com.blueroom.englishstories.Read_Story_Activity;
-import com.blueroom.englishstories.databinding.CategotyNamesRvBinding;
-import com.blueroom.englishstories.models.CategoryNames;
-
+import com.blueroom.englishstories.databinding.StoriesNamesRvBinding;
+import com.blueroom.englishstories.models.StoriesName;
 import java.util.ArrayList;
 
-public class CategoryNameAdapter extends RecyclerView.Adapter<CategoryNameAdapter.ViewHolder>{
+public class StoriesNameAdapter extends RecyclerView.Adapter<StoriesNameAdapter.ViewHolder>{
 
-    ArrayList<CategoryNames> namesList;
+    ArrayList<StoriesName> namesList;
     Context context;
 
-    public CategoryNameAdapter(ArrayList<CategoryNames> namesList, Context context) {
+    public StoriesNameAdapter(ArrayList<StoriesName> namesList, Context context) {
         this.namesList = namesList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CategoryNameAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.categoty_names_rv,parent,false);
+    public StoriesNameAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.stories_names_rv,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryNameAdapter.ViewHolder holder, int position) {
-        CategoryNames model = namesList.get(position);
-        holder.binding.categoryTitle.setText(model.getName());
+    public void onBindViewHolder(@NonNull StoriesNameAdapter.ViewHolder holder, int position) {
+        StoriesName model = namesList.get(position);
+        holder.binding.storyTitle.setText(model.getStoryTitle());
+        holder.binding.storyText.setText(model.getStoryText());
 
 
         holder.binding.like.setOnClickListener(view -> {
@@ -47,7 +45,7 @@ public class CategoryNameAdapter extends RecyclerView.Adapter<CategoryNameAdapte
         holder.itemView.setOnClickListener(view -> {
 
             Intent intent = new Intent(context, Read_Story_Activity.class);
-            intent.putExtra("name",model.getName());
+            intent.putExtra("name",model.getStoryTitle());
             context.startActivity(intent);
             ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -62,10 +60,10 @@ public class CategoryNameAdapter extends RecyclerView.Adapter<CategoryNameAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        CategotyNamesRvBinding binding;
+        StoriesNamesRvBinding binding;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = CategotyNamesRvBinding.bind(itemView);
+            binding = StoriesNamesRvBinding.bind(itemView);
         }
     }
 

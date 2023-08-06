@@ -3,28 +3,20 @@ package com.blueroom.englishstories;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.graphics.Color;
+
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.blueroom.englishstories.Adapters.CategoryNameAdapter;
-import com.blueroom.englishstories.models.CategoryNames;
-import com.google.android.material.appbar.AppBarLayout;
+import com.blueroom.englishstories.Adapters.StoriesNameAdapter;
+import com.blueroom.englishstories.models.StoriesName;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import android.os.Build;
-import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.blueroom.englishstories.databinding.ActivityStoriesNameBinding;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class StoriesTitle_Activity extends AppCompatActivity {
 
@@ -67,38 +59,30 @@ public class StoriesTitle_Activity extends AppCompatActivity {
 
 
 
-        ArrayList<CategoryNames> nameList = new ArrayList<>();
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
-        nameList.add(new CategoryNames("Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
-        nameList.add(new CategoryNames("In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
-        nameList.add(new CategoryNames("Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
-        nameList.add(new CategoryNames("I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        ArrayList<StoriesName> nameList = new ArrayList<>();
+        nameList.add(new StoriesName("J.K Rowling","Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new StoriesName("Mark Zukerberg","In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new StoriesName("Bill Gates","Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new StoriesName("Jeff Bezoz","I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new StoriesName("J.K Rowling","Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new StoriesName("Mark Zukerberg","In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new StoriesName("Bill Gates","Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new StoriesName("Jeff Bezoz","I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new StoriesName("J.K Rowling","Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new StoriesName("Mark Zukerberg","In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new StoriesName("Bill Gates","Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new StoriesName("Jeff Bezoz","I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new StoriesName("J.K Rowling","Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new StoriesName("Mark Zukerberg","In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new StoriesName("Bill Gates","Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new StoriesName("Jeff Bezoz","I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
+        nameList.add(new StoriesName("J.K Rowling","Once there was a girl named Lia. She was very lonely. She had no friends or sisters."));
+        nameList.add(new StoriesName("Mark Zukerberg","In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at artistic works. At a very early"));
+        nameList.add(new StoriesName("Bill Gates","Mother Teresa was born (Anjezë Gonxhe Bojaxhiu) in 1910 in what is now part of modern Macedonia"));
+        nameList.add(new StoriesName("Jeff Bezoz","I rushed to the hospital after being informed by my school peon about the sudden decline of my grandmother's health. "));
 
 
-        CategoryNameAdapter adapter = new CategoryNameAdapter(nameList,StoriesTitle_Activity.this);
+        StoriesNameAdapter adapter = new StoriesNameAdapter(nameList,StoriesTitle_Activity.this);
         binding.categoryNameRecyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(StoriesTitle_Activity.this);
         binding.categoryNameRecyclerView.setLayoutManager(layoutManager);

@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.blueroom.englishstories.databinding.ActivityReadStroyBinding;
 
@@ -38,6 +42,34 @@ public class Read_Story_Activity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
+
+        binding.zoomInButton.setOnClickListener(view -> {
+            float count = binding.storytxt.getTextSize();
+            float textSize = count + 1;
+
+            // Limit the maximum text size to 50sp
+            if (textSize <= 50) {
+                binding.storytxt.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+                binding.storytxt.setGravity(Gravity.CENTER);
+                Log.d("Log", "Size: "+textSize);
+            } else {
+                Toast.makeText(this, "Maximum text size reached", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.zoomOutButton.setOnClickListener(view -> {
+            float count2 = binding.storytxt.getTextSize();
+            float textSize2 = count2 - 1;
+
+            // Limit the minimum text size to 12sp
+            if (textSize2 >= 20) {
+                binding.storytxt.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize2);
+                binding.storytxt.setGravity(Gravity.CENTER);
+                Log.d("Log", "Size: "+textSize2);
+            } else {
+                Toast.makeText(this, "Minimum text size reached", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

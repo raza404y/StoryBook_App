@@ -18,6 +18,8 @@
     <color name="anti_splash_white">#E0E0E0</color>
     <color name="orange1">#FFA41B</color>
     <color name="viewColor">#C3E5E4E2</color>
+    <color name="viewBackgroundColor">#D3D0D0</color>
+    <color name="zoom_color">#59000000</color>
 
 
 </resources>
