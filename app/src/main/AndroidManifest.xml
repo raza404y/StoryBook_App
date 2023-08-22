@@ -20,7 +20,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".StoriesTitle_Activity"
+            android:name=".StoriesActivity"
             android:exported="false"
             android:theme="@style/Theme.StoryTitle">
             <meta-data

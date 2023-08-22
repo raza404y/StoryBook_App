@@ -12,9 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.blueroom.englishstories.Adapters.CategoryAdapter;
+import com.blueroom.englishstories.Adapters.CategoriesAdapter;
 import com.blueroom.englishstories.databinding.ActivityMainBinding;
-import com.blueroom.englishstories.models.CategoryModel;
+import com.blueroom.englishstories.models.CategoriesModel;
 
 import java.util.ArrayList;
 
@@ -33,35 +33,32 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        ArrayList<CategoryModel> categoryList = new ArrayList<>();
+        ArrayList<CategoriesModel> categoryList = new ArrayList<>();
 
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Horror", null, R.drawable.img,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Funny", null, R.drawable.img_1,"laugh everyday"));
-        categoryList.add(new CategoryModel("Motivational", null, R.drawable.img_2,"get inspire everyday"));
-        categoryList.add(new CategoryModel("Inspirational", null, R.drawable.img_3,"get inspire everyday"));
-
-
+        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
+        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
+        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
+        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
+        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
+        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
+        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
+        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
+        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
+        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
+        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
+        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
+        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
+        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
+        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
+        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
+        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
+        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
+        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
+        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
 
 
 
-
-        CategoryAdapter adapter = new CategoryAdapter(categoryList, MainActivity.this);
+        CategoriesAdapter adapter = new CategoriesAdapter(categoryList, MainActivity.this);
         binding.categoriesRecyclerView.setAdapter(adapter);
 
 

@@ -1,20 +1,18 @@
 package com.blueroom.englishstories.models;
 
-public class CategoryModel {
+public class CategoriesModel {
 
     private String categoryName;
     private String categoryId;
     private int categoryImage;
-    private String categorySubName;
 
-    public CategoryModel(String categoryName, String categoryId, int categoryImage, String categorySubName) {
+    public CategoriesModel(String categoryName, String categoryId, int categoryImage) {
         this.categoryName = categoryName;
         this.categoryId = categoryId;
         this.categoryImage = categoryImage;
-        this.categorySubName = categorySubName;
     }
 
-    public CategoryModel() {
+    public CategoriesModel() {
     }
 
     public String getCategoryName() {
@@ -41,11 +39,4 @@ public class CategoryModel {
         this.categoryImage = categoryImage;
     }
 
-    public String getCategorySubName() {
-        return categorySubName;
-    }
-
-    public void setCategorySubName(String categorySubName) {
-        this.categorySubName = categorySubName;
-    }
 }

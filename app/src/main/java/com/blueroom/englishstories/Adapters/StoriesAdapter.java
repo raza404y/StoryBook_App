@@ -10,32 +10,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.blueroom.englishstories.R;
 import com.blueroom.englishstories.Read_Story_Activity;
-import com.blueroom.englishstories.databinding.StoriesNamesRvBinding;
-import com.blueroom.englishstories.models.StoriesName;
+import com.blueroom.englishstories.databinding.StoriesRvLayoutBinding;
+import com.blueroom.englishstories.models.StoriesModel;
 import java.util.ArrayList;
 
-public class StoriesNameAdapter extends RecyclerView.Adapter<StoriesNameAdapter.ViewHolder>{
+public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHolder>{
 
-    ArrayList<StoriesName> namesList;
+    ArrayList<StoriesModel> namesList;
     Context context;
 
-    public StoriesNameAdapter(ArrayList<StoriesName> namesList, Context context) {
+    public StoriesAdapter(ArrayList<StoriesModel> namesList, Context context) {
         this.namesList = namesList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public StoriesNameAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.stories_names_rv,parent,false);
+    public StoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.stories__rv_layout,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StoriesNameAdapter.ViewHolder holder, int position) {
-        StoriesName model = namesList.get(position);
+    public void onBindViewHolder(@NonNull StoriesAdapter.ViewHolder holder, int position) {
+        StoriesModel model = namesList.get(position);
         holder.binding.storyTitle.setText(model.getStoryTitle());
         holder.binding.storyText.setText(model.getStoryText());
+        holder.binding.storyImage.setImageResource(model.getStoryImg());
 
 
         holder.binding.like.setOnClickListener(view -> {
@@ -60,10 +61,10 @@ public class StoriesNameAdapter extends RecyclerView.Adapter<StoriesNameAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        StoriesNamesRvBinding binding;
+        StoriesRvLayoutBinding binding;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = StoriesNamesRvBinding.bind(itemView);
+            binding = StoriesRvLayoutBinding.bind(itemView);
         }
     }
 
