@@ -6,27 +6,27 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/cateogory_bg"
-    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginStart="@dimen/_8sdp"
-    android:layout_marginBottom="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
     android:layout_marginEnd="@dimen/_8sdp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_59sdp"
+        android:layout_height="@dimen/_62sdp"
         android:background="?attr/selectableItemBackgroundBorderless">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:rotation="9"
-            android:background="@drawable/view_bg"
-            app:layout_constraintBottom_toBottomOf="@+id/categoryImage"
-            app:layout_constraintEnd_toEndOf="@id/categoryImage"
-            app:layout_constraintStart_toStartOf="@id/categoryImage"
-            app:layout_constraintTop_toTopOf="@id/categoryImage" />
+<!--        <View-->
+<!--            android:id="@+id/view"-->
+<!--            android:layout_width="@dimen/_40sdp"-->
+<!--            android:layout_height="@dimen/_40sdp"-->
+<!--            android:rotation="9"-->
+<!--            android:background="@drawable/view_bg"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/categoryImage"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/categoryImage"-->
+<!--            app:layout_constraintStart_toStartOf="@id/categoryImage"-->
+<!--            app:layout_constraintTop_toTopOf="@id/categoryImage" />-->
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/categoryImage"
@@ -41,11 +41,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:src="@drawable/categories"
+            app:tint="@color/strokeColor"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/categoryName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/categoryName" />
+
         <TextView
             android:id="@+id/categoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginStart="12dp"
             android:gravity="start|center"
             android:paddingStart="@dimen/_8sdp"
             android:paddingEnd="@dimen/_4sdp"
@@ -53,10 +63,9 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintBottom_toBottomOf="@+id/categoryImage"
             app:layout_constraintStart_toEndOf="@+id/categoryImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toTopOf="@+id/categoryImage" />
 
 
         <!--    <View-->

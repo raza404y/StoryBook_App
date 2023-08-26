@@ -12,6 +12,7 @@
     <color name="white2">#FFFFFFFF</color>
 
 
+    <color name="backgroundColor">#43AC78</color>
     <color name="red">#D71313</color>
     <color name="greyColor">#F5F5F5</color>
     <color name="strokeColor">#E5E4E2</color>

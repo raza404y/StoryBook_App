@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_55sdp"
+        android:layout_height="@dimen/_65sdp"
         android:background="?attr/selectableItemBackgroundBorderless">
 
         <ImageView
@@ -68,6 +68,7 @@
             android:paddingStart="@dimen/_14sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:singleLine="true"
+            android:paddingTop="@dimen/_3sdp"
             android:paddingBottom="@dimen/_4sdp"
             android:text="Once there was a girl named Lia. She was very lonely. She had no friends or sisters."
             android:textSize="@dimen/_12ssp"

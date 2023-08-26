@@ -1,117 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/actionBarItemBackground"
-    android:fitsSystemWindows="true"
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
     tools:context=".Read_Story_Activity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/storyTitleTv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/Theme.StoryBook">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="@string/app_name"
-            app:expandedTitleGravity="center|bottom"
-            app:expandedTitleTextColor="@color/white"
-            app:collapsedTitleTextColor="@color/black"
-            app:contentScrim="?attr/colorPrimary">
-
-            <ImageView
-                android:id="@+id/storyImage"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_160sdp"
-                android:src="@drawable/img_2"
-                app:layout_collapseMode="parallax"
-                android:scaleType="centerCrop" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/readStoryToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_margin="@dimen/_12sdp"
+        android:background="@drawable/custom_ripple_background"
+        android:drawablePadding="@dimen/_12sdp"
+        android:minWidth="@dimen/_100sdp"
+        android:padding="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:singleLine="true"
+        android:text="Mark Zukerberggggggggggggggg"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/previous"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/storyTitleTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/storyTitleTv">
 
 
+        <ImageView
+            android:id="@+id/zoomOutButton"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@drawable/custom_ripple_background"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_7sdp"
+            android:src="@drawable/minus_2"
+            app:layout_constraintBottom_toBottomOf="@+id/storyTitleTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/storyTitleTv" />
+
+        <ImageView
+            android:id="@+id/zoomInButton"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@drawable/custom_ripple_background"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_7sdp"
+            android:src="@drawable/plus_2"
+            app:layout_constraintBottom_toBottomOf="@+id/zoomOutButton"
+            app:layout_constraintEnd_toStartOf="@+id/speakButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/zoomOutButton"
+            app:layout_constraintTop_toTopOf="@+id/zoomOutButton" />
+
+
+        <ImageView
+            android:id="@+id/speakButton"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@drawable/custom_ripple_background"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_7sdp"
+            android:src="@drawable/volume_outline"
+            app:layout_constraintBottom_toBottomOf="@+id/zoomInButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/zoomInButton"
+            app:layout_constraintTop_toTopOf="@+id/zoomInButton" />
+
+
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storyTitleTv">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
             <TextView
                 android:id="@+id/storytxt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/story_bg"
+                android:gravity="center_horizontal"
                 android:padding="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_10sdp"
                 android:text="@string/asd"
-                android:textSize="@dimen/_14ssp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_15ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-    </androidx.core.widget.NestedScrollView>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/_2sdp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65999997">
-
-
-            <ImageView
-                android:id="@+id/zoomInButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_2sdp"
-                android:background="@drawable/image_button_bg"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/zoom_in"
-                android:text="Zoom In"
-                app:layout_constraintBottom_toTopOf="@+id/zoomOutButton"
-                app:layout_constraintEnd_toEndOf="@+id/zoomOutButton" />
-
-            <ImageView
-                android:id="@+id/zoomOutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:layout_marginEnd="@dimen/_2sdp"
-                android:background="@drawable/image_button_bg"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/zoom_out"
-                android:text="Zoom Out"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
