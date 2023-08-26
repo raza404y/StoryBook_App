@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1057723401084",
+    "project_id": "stories-c8ebc",
+    "storage_bucket": "stories-c8ebc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057723401084:android:4b0860938e1b95ed5e5af9",
+        "android_client_info": {
+          "package_name": "com.blueroom.englishstories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057723401084-c6ol3scuvvnmjqj4bbm2ca91satqp7ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG_09T2vaZzyC_ciGH_9rKUOZxgBcWfGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057723401084-c6ol3scuvvnmjqj4bbm2ca91satqp7ve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
