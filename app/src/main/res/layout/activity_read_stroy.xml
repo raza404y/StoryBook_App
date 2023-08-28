@@ -24,7 +24,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
-        app:drawableStartCompat="@drawable/previous"
+        app:drawableStartCompat="@drawable/back_button_black"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,10 +49,7 @@
             android:background="@drawable/custom_ripple_background"
             android:contentDescription="@string/app_name"
             android:padding="@dimen/_7sdp"
-            android:src="@drawable/minus_2"
-            app:layout_constraintBottom_toBottomOf="@+id/storyTitleTv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/storyTitleTv" />
+            android:src="@drawable/minus_2" />
 
         <ImageView
             android:id="@+id/zoomInButton"
@@ -62,12 +59,7 @@
             android:background="@drawable/custom_ripple_background"
             android:contentDescription="@string/app_name"
             android:padding="@dimen/_7sdp"
-            android:src="@drawable/plus_2"
-            app:layout_constraintBottom_toBottomOf="@+id/zoomOutButton"
-            app:layout_constraintEnd_toStartOf="@+id/speakButton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/zoomOutButton"
-            app:layout_constraintTop_toTopOf="@+id/zoomOutButton" />
+            android:src="@drawable/plus_2" />
 
 
         <ImageView
@@ -78,12 +70,7 @@
             android:background="@drawable/custom_ripple_background"
             android:contentDescription="@string/app_name"
             android:padding="@dimen/_7sdp"
-            android:src="@drawable/volume_outline"
-            app:layout_constraintBottom_toBottomOf="@+id/zoomInButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/zoomInButton"
-            app:layout_constraintTop_toTopOf="@+id/zoomInButton" />
+            android:src="@drawable/volume_outline" />
 
 
     </LinearLayout>
@@ -112,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/story_bg"
                 android:gravity="center_horizontal"

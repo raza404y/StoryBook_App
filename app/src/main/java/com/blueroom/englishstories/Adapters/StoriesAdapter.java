@@ -36,7 +36,6 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
         StoriesModel model = namesList.get(position);
         holder.binding.storyTitle.setText(model.getStoryTitle());
         holder.binding.storyText.setText(model.getStoryText());
-        holder.binding.storyImage.setImageResource(model.getStoryImg());
 
 
         holder.binding.like.setOnClickListener(view -> {

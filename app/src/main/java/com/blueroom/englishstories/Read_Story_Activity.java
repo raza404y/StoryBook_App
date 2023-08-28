@@ -11,14 +11,12 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blueroom.englishstories.databinding.ActivityReadStroyBinding;
 
-import java.util.HashMap;
 import java.util.Locale;
 
 public class Read_Story_Activity extends AppCompatActivity implements TextToSpeech.OnInitListener {

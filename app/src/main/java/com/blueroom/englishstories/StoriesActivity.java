@@ -30,32 +30,23 @@ public class StoriesActivity extends AppCompatActivity {
         binding = ActivityStoriesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
-        collapsingToolbarLayout.setExpandedTitleTextSize(50.5f);
-
-        setSupportActionBar(binding.toolbar1);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Set the custom drawable as the back button icon
-            actionBar.setHomeAsUpIndicator(R.drawable.back_button_custom);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-        }
 
 
 
-        binding.toolbar1.setNavigationOnClickListener(view -> {
-            onBackPressed();
+        String name = getIntent().getStringExtra("name");
+
+        binding.categoryNameTv.setText(name+" Stories");
+
+        binding.categoryNameTv.setOnClickListener(view -> {
+
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
+
         });
 
 
-          getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        String name = getIntent().getStringExtra("name");
-        int uri = getIntent().getIntExtra("uri",0);
 
-        getSupportActionBar().setTitle(name+" Stories");
 
 
 
@@ -83,9 +74,9 @@ public class StoriesActivity extends AppCompatActivity {
 
 
         StoriesAdapter adapter = new StoriesAdapter(nameList, StoriesActivity.this);
-        binding.categoryNameRecyclerView.setAdapter(adapter);
+        binding.storiesNameRecyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(StoriesActivity.this);
-        binding.categoryNameRecyclerView.setLayoutManager(layoutManager);
+        binding.storiesNameRecyclerView.setLayoutManager(layoutManager);
 
     }
 

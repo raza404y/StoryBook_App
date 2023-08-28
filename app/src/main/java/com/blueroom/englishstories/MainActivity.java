@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
          // getWindow().getDecorView().setSystemUiVisibility(SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        setSupportActionBar(binding.toolbar);
+
 
         ArrayList<CategoriesModel> categoryList = new ArrayList<>();
 
