@@ -18,6 +18,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
 
     ArrayList<StoriesModel> namesList;
     Context context;
+    boolean isLiked;
 
     public StoriesAdapter(ArrayList<StoriesModel> namesList, Context context) {
         this.namesList = namesList;
@@ -39,8 +40,15 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
 
 
         holder.binding.like.setOnClickListener(view -> {
-            holder.binding.like.setImageResource(R.drawable.heart_filled);
-        });
+
+            isLiked = !isLiked;
+            if (isLiked) {
+                holder.binding.like.setImageResource(R.drawable.heart_filled);
+            }else {
+                holder.binding.like.setImageResource(R.drawable.heart_outline);
+
+            }
+            });
 
         holder.itemView.setOnClickListener(view -> {
 
