@@ -35,12 +35,14 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
         binding = ActivityReadStroyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //  getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         textView = findViewById(R.id.storytxt);
         speakButton = findViewById(R.id.speakButton);
         String storyName = getIntent().getStringExtra("name");
+        String story = getIntent().getStringExtra("stxt");
 
         binding.storyTitleTv.setText(storyName);
+        binding.storytxt.setText(story);
 
         binding.storyTitleTv.setOnClickListener(view -> {
 

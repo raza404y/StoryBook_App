@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +15,12 @@ import com.blueroom.englishstories.R;
 import com.blueroom.englishstories.StoriesActivity;
 import com.blueroom.englishstories.databinding.CategoriesRvLayoutBinding;
 import com.blueroom.englishstories.models.CategoriesModel;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder>{
+public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
 
     ArrayList<CategoriesModel> categoryList;
     Context context;
@@ -30,25 +33,27 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.categories_rv_layout,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.categories_rv_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CategoriesModel model =  categoryList.get(position);
+        CategoriesModel model = categoryList.get(position);
         holder.binding.categoryName.setText(model.getCategoryName());
-        holder.binding.categoryImage.setImageResource(model.getCategoryImage());
 
+        Glide.with(context)
+                .load(model.getCategoryImage())
+                .into(holder.binding.categoryImage);
 
 
         holder.itemView.setOnClickListener(view -> {
 
             Intent intent = new Intent(context, StoriesActivity.class);
-            intent.putExtra("name",model.getCategoryName());
+            intent.putExtra("name", model.getCategoryName());
+            intent.putExtra("id", model.getCategoryId());
             context.startActivity(intent);
-            ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
+            ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         });
 

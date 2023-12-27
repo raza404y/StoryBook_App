@@ -7,22 +7,31 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.blueroom.englishstories.Adapters.CategoriesAdapter;
 import com.blueroom.englishstories.databinding.ActivityMainBinding;
 import com.blueroom.englishstories.models.CategoriesModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    FirebaseDatabase database;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -31,40 +40,36 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // getWindow().getDecorView().setSystemUiVisibility(SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
+        // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         ToolbarItemsListeners();
 
-
+        database = FirebaseDatabase.getInstance();
 
         ArrayList<CategoriesModel> categoryList = new ArrayList<>();
 
-        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
-        categoryList.add(new CategoriesModel("Horror", null, R.drawable.img));
-        categoryList.add(new CategoriesModel("Funny", null, R.drawable.img_1));
-        categoryList.add(new CategoriesModel("Motivational", null, R.drawable.img_2));
-        categoryList.add(new CategoriesModel("Inspirational", null, R.drawable.img_3));
-
-
-
         CategoriesAdapter adapter = new CategoriesAdapter(categoryList, MainActivity.this);
         binding.categoriesRecyclerView.setAdapter(adapter);
+        database.getReference().child("categories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    categoryList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        CategoriesModel model = dataSnapshot.getValue(CategoriesModel.class);
+                        assert model != null;
+                        model.setCategoryId(dataSnapshot.getKey());
+                        categoryList.add(model);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 

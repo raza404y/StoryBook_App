@@ -5,6 +5,7 @@ public class StoriesModel {
     String storyTitle;
     String StoryText;
     int StoryImg;
+    String storyId;
 
 
     public StoriesModel(String storyTitle, String storyText, int storyImg) {
@@ -14,6 +15,15 @@ public class StoriesModel {
     }
 
     public StoriesModel() {
+    }
+
+
+    public String getStoryId() {
+        return storyId;
+    }
+
+    public void setStoryId(String storyId) {
+        this.storyId = storyId;
     }
 
     public String getStoryTitle() {

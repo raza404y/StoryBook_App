@@ -6,6 +6,7 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".StoriesActivity"
+    android:id="@+id/container"
     android:background="@color/backgroundColor">
 
 
@@ -20,7 +21,7 @@
         android:padding="@dimen/_8sdp"
         android:paddingEnd="@dimen/_10sdp"
         android:singleLine="true"
-        android:text="Mark Zukerberggggggggggggggg"
+        android:text="Mark Zukerberggggggggg"
         android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"

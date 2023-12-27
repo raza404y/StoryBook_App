@@ -46,7 +46,6 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
                 holder.binding.like.setImageResource(R.drawable.heart_filled);
             }else {
                 holder.binding.like.setImageResource(R.drawable.heart_outline);
-
             }
             });
 
@@ -54,6 +53,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
 
             Intent intent = new Intent(context, Read_Story_Activity.class);
             intent.putExtra("name",model.getStoryTitle());
+            intent.putExtra("stxt",model.getStoryText());
             context.startActivity(intent);
             ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 

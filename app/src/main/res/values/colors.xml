@@ -11,7 +11,7 @@
     <color name="white">#FAFAFA</color>
     <color name="white2">#FFFFFFFF</color>
 
-
+    <color name="comments_text_color">#B2000000</color>
     <color name="backgroundColor">#43AC78</color>
     <color name="red">#D71313</color>
     <color name="greyColor">#F5F5F5</color>
