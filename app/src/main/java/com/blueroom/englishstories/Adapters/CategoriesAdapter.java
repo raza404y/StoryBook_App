@@ -43,18 +43,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         holder.binding.categoryName.setText(model.getCategoryName());
 
         Glide.with(context)
-                .load(model.getCategoryImage())
+                .load(model.getImageUrl())
                 .into(holder.binding.categoryImage);
 
 
         holder.itemView.setOnClickListener(view -> {
-
             Intent intent = new Intent(context, StoriesActivity.class);
             intent.putExtra("name", model.getCategoryName());
             intent.putExtra("id", model.getCategoryId());
             context.startActivity(intent);
             ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
         });
 
 

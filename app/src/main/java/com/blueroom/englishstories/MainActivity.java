@@ -5,6 +5,7 @@ import static android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         ArrayList<CategoriesModel> categoryList = new ArrayList<>();
-
-        CategoriesAdapter adapter = new CategoriesAdapter(categoryList, MainActivity.this);
+        CategoriesAdapter adapter = new CategoriesAdapter(categoryList,MainActivity.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         binding.categoriesRecyclerView.setAdapter(adapter);
+        binding.categoriesRecyclerView.setLayoutManager(layoutManager);
+
         database.getReference().child("categories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -64,19 +67,14 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
     }
-
     /////////////////////  Methods /////////////////////////
-
     private void ToolbarItemsListeners(){
 
         binding.rateUsBtn.setOnClickListener(view -> {
@@ -106,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-
 
         binding.shareBtn.setOnClickListener(view -> {
 

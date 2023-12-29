@@ -4,12 +4,12 @@ public class CategoriesModel {
 
     private String categoryName;
     private String categoryId;
-    private int categoryImage;
+    private String imageUrl;
 
-    public CategoriesModel(String categoryName, String categoryId, int categoryImage) {
+    public CategoriesModel(String categoryName, String categoryId, String imageUrl) {
         this.categoryName = categoryName;
         this.categoryId = categoryId;
-        this.categoryImage = categoryImage;
+        this.imageUrl = imageUrl;
     }
 
     public CategoriesModel() {
@@ -31,12 +31,11 @@ public class CategoriesModel {
         this.categoryId = categoryId;
     }
 
-    public int getCategoryImage() {
-        return categoryImage;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setCategoryImage(int categoryImage) {
-        this.categoryImage = categoryImage;
+    public void setImageUrl(String categoryImage) {
+        this.imageUrl = categoryImage;
     }
-
 }

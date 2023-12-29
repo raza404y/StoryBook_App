@@ -6,15 +6,19 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.blueroom.englishstories.R;
 import com.blueroom.englishstories.Read_Story_Activity;
 import com.blueroom.englishstories.databinding.StoriesRvLayoutBinding;
 import com.blueroom.englishstories.models.StoriesModel;
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
-public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHolder>{
+public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHolder> {
 
     ArrayList<StoriesModel> namesList;
     Context context;
@@ -28,7 +32,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
     @NonNull
     @Override
     public StoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.stories__rv_layout,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.stories__rv_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,30 +42,25 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
         holder.binding.storyTitle.setText(model.getStoryTitle());
         holder.binding.storyText.setText(model.getStoryText());
 
-
         holder.binding.like.setOnClickListener(view -> {
 
             isLiked = !isLiked;
             if (isLiked) {
-                holder.binding.like.setImageResource(R.drawable.heart_filled);
-            }else {
                 holder.binding.like.setImageResource(R.drawable.heart_outline);
+            } else {
+                holder.binding.like.setImageResource(R.drawable.heart_filled);
             }
-            });
+        });
 
         holder.itemView.setOnClickListener(view -> {
 
             Intent intent = new Intent(context, Read_Story_Activity.class);
-            intent.putExtra("name",model.getStoryTitle());
-            intent.putExtra("stxt",model.getStoryText());
+            intent.putExtra("name", model.getStoryTitle());
+            intent.putExtra("stxt", model.getStoryText());
             context.startActivity(intent);
-            ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
+            ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
-
     }
-
     @Override
     public int getItemCount() {
         return namesList.size();
@@ -69,11 +68,10 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         StoriesRvLayoutBinding binding;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             binding = StoriesRvLayoutBinding.bind(itemView);
         }
     }
-
-
 }
