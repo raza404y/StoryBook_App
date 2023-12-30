@@ -66,14 +66,30 @@ public class StoriesActivity extends AppCompatActivity {
                         model.setStoryId(dataSnapshot.getKey());
                         nameList.add(model);
                     }
+
                     adapter.notifyDataSetChanged();
+
+                    // Check if nameList is empty after the loop
+                    if (nameList.isEmpty()) {
+                        binding.progressBar2.setVisibility(View.GONE);
+                        binding.noStoryYet.setVisibility(View.VISIBLE);
+                    } else {
+                        binding.noStoryYet.setVisibility(View.GONE);
+                        binding.progressBar2.setVisibility(View.GONE);
+                    }
+                } else {
+                    // Handle the case when there is no data
+                    binding.progressBar2.setVisibility(View.GONE);
+                    binding.noStoryYet.setVisibility(View.VISIBLE);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(StoriesActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
     }

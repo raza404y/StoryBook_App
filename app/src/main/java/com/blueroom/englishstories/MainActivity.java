@@ -1,24 +1,15 @@
 package com.blueroom.englishstories;
 
-import static android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.blueroom.englishstories.Adapters.CategoriesAdapter;
 import com.blueroom.englishstories.databinding.ActivityMainBinding;
 import com.blueroom.englishstories.models.CategoriesModel;
@@ -26,7 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         binding.categoriesRecyclerView.setAdapter(adapter);
         binding.categoriesRecyclerView.setLayoutManager(layoutManager);
 
+
         database.getReference().child("categories").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -65,13 +56,18 @@ public class MainActivity extends AppCompatActivity {
                         categoryList.add(model);
                     }
                     adapter.notifyDataSetChanged();
+                    binding.progressBar.setVisibility(View.GONE);
                 }
+//                Collections.shuffle(categoryList);
+//                adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
     }
     /////////////////////  Methods /////////////////////////

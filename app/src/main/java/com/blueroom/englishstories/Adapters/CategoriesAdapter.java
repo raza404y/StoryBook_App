@@ -44,6 +44,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
         Glide.with(context)
                 .load(model.getImageUrl())
+                .placeholder(R.drawable.img)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.binding.categoryImage);
 
 
