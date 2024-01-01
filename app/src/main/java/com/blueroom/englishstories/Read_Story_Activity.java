@@ -122,12 +122,25 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
         String text = textView.getText().toString();
 
         if (!text.isEmpty()) {
-            textToSpeech.setSpeechRate(0.7f);
-            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, "speak");
-        }else {
+            // Split the text into chunks of 4000 characters
+            int chunkSize = 4000;
+            for (int i = 0; i < text.length(); i += chunkSize) {
+                int end = Math.min(i + chunkSize, text.length());
+                String chunk = text.substring(i, end);
+
+                textToSpeech.setSpeechRate(0.7f);
+                textToSpeech.speak(chunk, TextToSpeech.QUEUE_ADD, null, "speak");
+
+                // Add a delay between chunks to ensure proper processing
+                try {
+                    Thread.sleep(1000); // You can adjust this delay as needed
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
             Toast.makeText(this, "Engine is getting ready..", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
