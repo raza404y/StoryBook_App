@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class StoriesActivity extends AppCompatActivity {
 
-
+    String truncatedText;
     ActivityStoriesBinding binding;
     FirebaseDatabase database;
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -64,6 +65,9 @@ public class StoriesActivity extends AppCompatActivity {
                         StoriesModel model = dataSnapshot.getValue(StoriesModel.class);
                         assert model != null;
                         model.setStoryId(dataSnapshot.getKey());
+                        // Truncate the story text and set the shortened version
+                        truncatedText = truncateText(model.getStoryText(), 60); // Adjust the length as needed
+                        model.setShortenedStoryText(truncatedText);
                         nameList.add(model);
                     }
 
@@ -86,9 +90,10 @@ public class StoriesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(StoriesActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(StoriesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
 
@@ -98,5 +103,12 @@ public class StoriesActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+    private String truncateText(String text, int maxLength) {
+        if (text.length() > maxLength) {
+            return text.substring(0, maxLength);
+        } else {
+            return text;
+        }
     }
 }

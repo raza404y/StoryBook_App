@@ -40,7 +40,9 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
     public void onBindViewHolder(@NonNull StoriesAdapter.ViewHolder holder, int position) {
         StoriesModel model = namesList.get(position);
         holder.binding.storyTitle.setText(model.getStoryTitle());
-        holder.binding.storyText.setText(model.getStoryText());
+      //  holder.binding.storyText.setText(model.getStoryText());
+        holder.binding.storyText.setText(model.getShortenedStoryText());
+
 
         holder.binding.like.setOnClickListener(view -> {
 

@@ -6,7 +6,7 @@ public class StoriesModel {
     String StoryText;
     int StoryImg;
     String storyId;
-
+    private String shortenedStoryText;
 
     public StoriesModel(String storyTitle, String storyText, int storyImg) {
         this.storyTitle = storyTitle;
@@ -17,6 +17,13 @@ public class StoriesModel {
     public StoriesModel() {
     }
 
+    public String getShortenedStoryText() {
+        return shortenedStoryText;
+    }
+
+    public void setShortenedStoryText(String shortenedStoryText) {
+        this.shortenedStoryText = shortenedStoryText;
+    }
 
     public String getStoryId() {
         return storyId;
