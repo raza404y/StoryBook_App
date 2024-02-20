@@ -12,16 +12,23 @@
         <!-- Status bar color. -->
         <item name="android:textColorSecondary">@color/backgroundColor</item>
         <item name="colorAccent">@color/backgroundColor</item>
-        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/backgroundColor</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+
+
+    <style name="categoriesFont" parent="">
+
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="roundedImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/_5sdp</item>
     </style>
-
 
 
     <style name="Theme.StoryTitle" parent="Theme.MaterialComponents.Light.NoActionBar">
