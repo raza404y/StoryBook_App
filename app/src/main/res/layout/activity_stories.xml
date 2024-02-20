@@ -14,7 +14,9 @@
         android:id="@+id/categoryNameTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:background="@drawable/custom_ripple_background"
         android:drawablePadding="@dimen/_12sdp"
         android:minWidth="@dimen/_100sdp"
@@ -26,9 +28,21 @@
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         app:drawableStartCompat="@drawable/back_button_black"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/categoryImage"
         app:layout_constraintStart_toStartOf="@+id/frameLayout2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/categoryImage"
+        android:layout_width="@dimen/_33sdp"
+        android:layout_height="@dimen/_33sdp"
+        android:src="@drawable/img"
+        android:layout_marginEnd="@dimen/_18sdp"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/_1sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/categoryNameTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/categoryNameTv" />
 
     <FrameLayout
         android:id="@+id/frameLayout2"
@@ -47,7 +61,6 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/categories_bg"
-            android:paddingTop="@dimen/_10sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

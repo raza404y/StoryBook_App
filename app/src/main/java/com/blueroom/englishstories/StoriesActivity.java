@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.blueroom.englishstories.Adapters.StoriesAdapter;
 import com.blueroom.englishstories.databinding.ActivityStoriesBinding;
+import com.blueroom.englishstories.models.CategoriesModel;
 import com.blueroom.englishstories.models.StoriesModel;
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,8 +39,14 @@ public class StoriesActivity extends AppCompatActivity {
 
         String name = getIntent().getStringExtra("name");
         String categoryId = getIntent().getStringExtra("id");
+        String imageUrl = getIntent().getStringExtra("img");
 
-        binding.categoryNameTv.setText(name+" Stories");
+        Glide.with(StoriesActivity.this)
+                        .load(imageUrl)
+                                .placeholder(R.drawable.img)
+                                        .into(binding.categoryImage);
+
+        binding.categoryNameTv.setText(name);
 
 
         binding.categoryNameTv.setOnClickListener(view -> {

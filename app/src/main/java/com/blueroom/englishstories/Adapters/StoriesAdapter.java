@@ -44,15 +44,15 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
         holder.binding.storyText.setText(model.getShortenedStoryText());
 
 
-        holder.binding.like.setOnClickListener(view -> {
-
-            isLiked = !isLiked;
-            if (isLiked) {
-                holder.binding.like.setImageResource(R.drawable.heart_outline);
-            } else {
-                holder.binding.like.setImageResource(R.drawable.heart_filled);
-            }
-        });
+//        holder.binding.like.setOnClickListener(view -> {
+//
+//            isLiked = !isLiked;
+//            if (isLiked) {
+//                holder.binding.like.setImageResource(R.drawable.heart_outline);
+//            } else {
+//                holder.binding.like.setImageResource(R.drawable.heart_filled);
+//            }
+//        });
 
         holder.itemView.setOnClickListener(view -> {
 

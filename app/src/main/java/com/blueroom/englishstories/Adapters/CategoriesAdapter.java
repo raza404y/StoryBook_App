@@ -53,6 +53,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             Intent intent = new Intent(context, StoriesActivity.class);
             intent.putExtra("name", model.getCategoryName());
             intent.putExtra("id", model.getCategoryId());
+            intent.putExtra("img", model.getImageUrl());
             context.startActivity(intent);
             ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });

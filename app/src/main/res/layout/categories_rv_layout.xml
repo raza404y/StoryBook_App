@@ -31,20 +31,22 @@
         app:layout_constraintTop_toTopOf="@+id/categoryName"
         app:tint="@color/strokeColor" />
 
-        <TextView
-            android:id="@+id/categoryName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:gravity="start|center"
-            android:paddingStart="@dimen/_8sdp"
-            android:paddingEnd="@dimen/_4sdp"
-            android:text="Motivational"
-            android:theme="@style/categoriesFont"
-            android:textSize="@dimen/_14ssp"
-            app:layout_constraintBottom_toBottomOf="@+id/categoryImage"
-            app:layout_constraintStart_toEndOf="@+id/categoryImage"
-            app:layout_constraintTop_toTopOf="@+id/categoryImage" />
+    <TextView
+        android:id="@+id/categoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:gravity="start|center"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:singleLine="true"
+        android:textSize="@dimen/_14ssp"
+        android:theme="@style/categoriesFont"
+        app:layout_constraintBottom_toBottomOf="@+id/categoryImage"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/categoryImage"
+        app:layout_constraintTop_toTopOf="@+id/categoryImage" />
 
 
     <View
