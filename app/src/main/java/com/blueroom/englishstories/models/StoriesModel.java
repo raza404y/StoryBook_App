@@ -1,5 +1,9 @@
 package com.blueroom.englishstories.models;
 
+
+import androidx.annotation.Keep;
+
+@Keep
 public class StoriesModel {
 
     String storyTitle;

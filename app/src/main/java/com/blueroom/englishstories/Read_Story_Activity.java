@@ -89,6 +89,7 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
         speakButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(Read_Story_Activity.this, "Speech engine is getting ready..", Toast.LENGTH_SHORT).show();
                 if (textToSpeech.isSpeaking()) {
                     textToSpeech.stop();
                     binding.speakButton.setImageDrawable(getDrawable(R.drawable.volume_outline));
@@ -128,7 +129,7 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
                 int end = Math.min(i + chunkSize, text.length());
                 String chunk = text.substring(i, end);
 
-                textToSpeech.setSpeechRate(0.7f);
+                textToSpeech.setSpeechRate(0.6f);
                 textToSpeech.speak(chunk, TextToSpeech.QUEUE_ADD, null, "speak");
 
                 // Add a delay between chunks to ensure proper processing

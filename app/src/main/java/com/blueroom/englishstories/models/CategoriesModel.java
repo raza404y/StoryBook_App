@@ -1,5 +1,8 @@
 package com.blueroom.englishstories.models;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class CategoriesModel {
 
     private String categoryName;

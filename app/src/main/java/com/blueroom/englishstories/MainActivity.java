@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +14,12 @@ import android.widget.Toast;
 import com.blueroom.englishstories.Adapters.CategoriesAdapter;
 import com.blueroom.englishstories.databinding.ActivityMainBinding;
 import com.blueroom.englishstories.models.CategoriesModel;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     FirebaseDatabase database;
+    AppUpdateManager appUpdateManager;
+    static final int IMMEDIATE_APP_UPDATE_REQ_CODE = 124;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -32,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+        checkUpdate();
 
         ToolbarItemsListeners();
 
@@ -117,5 +128,54 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+    // ## in app update method
+    private void checkUpdate() {
+
+        try {
+            Task<AppUpdateInfo> appUpdateInfoTask = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+            }
+
+            assert appUpdateInfoTask != null;
+            appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                        && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                    startUpdateFlow(appUpdateInfo);
+                } else if  (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS){
+                    startUpdateFlow(appUpdateInfo);
+                }
+            });
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+    private void startUpdateFlow(AppUpdateInfo appUpdateInfo) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE, this, IMMEDIATE_APP_UPDATE_REQ_CODE);
+            }
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMMEDIATE_APP_UPDATE_REQ_CODE) {
+            if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getApplicationContext(), "Kindly update now to use latest features.", Toast.LENGTH_LONG).show();
+                //  finish();
+            } else if (resultCode == RESULT_OK) {
+                Toast.makeText(getApplicationContext(), "Update success!", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Update Failed!", Toast.LENGTH_LONG).show();
+                checkUpdate();
+            }
+        }
     }
 }
