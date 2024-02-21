@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     binding.progressBar.setVisibility(View.GONE);
                 }
-//                Collections.shuffle(categoryList);
-//                adapter.notifyDataSetChanged();
+                Collections.shuffle(categoryList);
+                adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

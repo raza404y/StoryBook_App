@@ -40,7 +40,7 @@
         android:paddingStart="@dimen/_6sdp"
         android:paddingEnd="@dimen/_8sdp"
         android:singleLine="true"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_13ssp"
         android:theme="@style/categoriesFont"
         app:layout_constraintBottom_toBottomOf="@+id/categoryImage"
         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"

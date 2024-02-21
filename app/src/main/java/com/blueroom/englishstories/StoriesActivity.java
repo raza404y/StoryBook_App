@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class StoriesActivity extends AppCompatActivity {
 
@@ -94,6 +95,8 @@ public class StoriesActivity extends AppCompatActivity {
                     binding.progressBar2.setVisibility(View.GONE);
                     binding.noStoryYet.setVisibility(View.VISIBLE);
                 }
+                Collections.shuffle(nameList);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
