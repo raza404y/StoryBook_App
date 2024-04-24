@@ -1,8 +1,10 @@
 package com.blueroom.englishstories.Adapters;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +13,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blueroom.englishstories.Admob;
 import com.blueroom.englishstories.R;
 import com.blueroom.englishstories.StoriesActivity;
 import com.blueroom.englishstories.databinding.CategoriesRvLayoutBinding;
 import com.blueroom.englishstories.models.CategoriesModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -47,6 +56,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                 .placeholder(R.drawable.img)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.binding.categoryImage);
+
 
 
         holder.itemView.setOnClickListener(view -> {

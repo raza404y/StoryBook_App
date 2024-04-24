@@ -74,7 +74,6 @@ public class StoriesActivity extends AppCompatActivity {
                         StoriesModel model = dataSnapshot.getValue(StoriesModel.class);
                         assert model != null;
                         model.setStoryId(dataSnapshot.getKey());
-                        // Truncate the story text and set the shortened version
                         truncatedText = truncateText(model.getStoryText(), 70); // Adjust the length as needed
                         model.setShortenedStoryText(truncatedText);
                         nameList.add(model);

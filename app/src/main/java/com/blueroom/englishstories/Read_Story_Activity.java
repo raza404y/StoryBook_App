@@ -1,9 +1,12 @@
 package com.blueroom.englishstories;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -16,8 +19,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blueroom.englishstories.databinding.ActivityReadStroyBinding;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class Read_Story_Activity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
@@ -27,7 +39,8 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
     private ImageView speakButton;
     private TextToSpeech textToSpeech;
     private int pausedPosition = 0;
-
+    private AdView adView2;
+    int counter = 0;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +51,8 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
         // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         textView = findViewById(R.id.storytxt);
         speakButton = findViewById(R.id.speakButton);
+        adView2 = findViewById(R.id.adView2);
+
         String storyName = getIntent().getStringExtra("name");
         String story = getIntent().getStringExtra("stxt");
 
@@ -50,6 +65,43 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
         });
+
+        final SharedPreferences countPref = getSharedPreferences("counter", Context.MODE_PRIVATE);
+        counter = countPref.getInt("count", 0);
+
+        SharedPreferences.Editor editorAdsControl = countPref.edit();
+        if (countPref.getLong("ExpireDate", -1) > System.currentTimeMillis()) {
+
+        } else {
+            editorAdsControl.clear();
+            editorAdsControl.apply();
+        }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.getReference().child("banner_Ad").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    boolean showAds = Boolean.TRUE.equals(snapshot.getValue(boolean.class));
+                    if (showAds) {
+
+                        if (counter < 2) {
+                            loadAD();
+                        }
+
+                    } else {
+                        adView2.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("TAG", "onCancelled: " + error.getMessage());
+            }
+        });
+
+
         binding.storytxt.setGravity(Gravity.CENTER);
 
         binding.zoomInButton.setOnClickListener(view -> {
@@ -144,14 +196,7 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        if (textToSpeech != null) {
-            textToSpeech.stop();
-            textToSpeech.shutdown();
-        }
-        super.onDestroy();
-    }
+
 
     @Override
     public void onBackPressed() {
@@ -177,4 +222,80 @@ public class Read_Story_Activity extends AppCompatActivity implements TextToSpee
             }
         }
     }
+    private void loadAD() {
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+
+        if (counter < 2) {
+            adView2.loadAd(adRequest);
+            adView2.setVisibility(View.VISIBLE);
+        } else {
+            // disable the ad if the user has clicked on it more than twice
+            adView2.destroy();
+            return; // stop executing the rest of the code
+        }
+
+        adView2.setAdListener(new AdListener() {
+            private boolean adClicked = false;
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+
+                if (!adClicked) {
+                    adClicked = true;
+                    counter++;
+                    SharedPreferences countPref = getSharedPreferences("counter", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editorAdsControl = countPref.edit();
+                    editorAdsControl.putInt("count", counter);
+                    // Expire the shared preferences after some 1 minute set here according to requirement
+                    editorAdsControl.putLong("ExpireDate", System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(400));
+                    editorAdsControl.apply();
+                }
+
+                if (counter >= 2) {
+                    // disable the ad if the user has clicked on it more than twice
+                    adView2.destroy();
+                }
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                // finish the activity when the user leaves the app through the ad
+                finish();
+            }
+        });
+    }
+    @Override
+    protected void onDestroy() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        // Check if the binding object is not null before attempting to destroy the ad view
+        if (binding != null) {
+            binding.adView2.destroy();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // pause the ad view when the fragment is paused
+        adView2.pause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // resume the ad view when the fragment is resumed
+        adView2.resume();
+    }
+
 }
