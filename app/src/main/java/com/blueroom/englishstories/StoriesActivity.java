@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class StoriesActivity extends AppCompatActivity {
+public class StoriesActivity extends MainAppClass {
 
     String truncatedText;
     ActivityStoriesBinding binding;

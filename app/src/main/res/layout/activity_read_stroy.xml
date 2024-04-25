@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_margin="@dimen/_3sdp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:adSize="BANNER"
         app:adUnitId="@string/banner_ad_unit_id"
         app:layout_constraintBottom_toBottomOf="parent"

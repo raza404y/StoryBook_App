@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
+
+    <com.mckrpk.animatedprogressbar.AnimatedProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:animationDurationInMs="1600"
+        app:animationStyle="line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:lineWidth="@dimen/_4sdp"
+        app:max="1500"
+        app:progress="1000"
+        app:progressColor="@color/backgroundColor"
+        app:progressTipColor="@color/white"
+        android:layout_marginBottom="@dimen/_24sdp"
+        app:progressTipEnabled="true"
+        app:trackColor="@color/backgroundColor" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/read_and_listen"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

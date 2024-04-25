@@ -16,10 +16,10 @@ public class SplashScreen extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashScreen.this,MainActivity.class));
-            overridePendingTransition(0 ,0);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
            // progressBar.setVisibility(View.GONE);
-        },1300);
+        },3000);
 
     }
 }

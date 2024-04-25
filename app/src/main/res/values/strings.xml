@@ -4,9 +4,15 @@
     <string name="rate_us">Rate us</string>
 
     // test ad id
-    <string name="app_id_admob">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+<!--    <string name="app_id_admob">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+
+
+    // Real ad ids
+    <string name="app_id_admob">ca-app-pub-8683784714290528~1280734914</string>
+    <string name="interstitial_ad_id">ca-app-pub-8683784714290528/8421359343</string>
+    <string name="banner_ad_unit_id">ca-app-pub-8683784714290528/8674927635</string>
 
 
     <string name="email_feedback">blueroomxyz@gmail.com</string>
@@ -14,6 +20,7 @@
     <string name="asd">In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a \n\n\ntown of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town \n\n\n\nof Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. \n\nHe was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at In a town of Shimla, there was a very passionate and high dreamer teen, Prakhar Negi. He was very fine at </string>
     <string name="no_story_yet">No Story Yet!</string>
     <string name="more_stories_are_coming_soon">More Stories are coming soon..</string>
+    <string name="read_and_listen">Read and listen</string>
 
 
 </resources>
